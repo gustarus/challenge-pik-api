@@ -40,16 +40,19 @@ class AuthController extends BaseController {
   /**
    * @return bool
    * @throws BadRequestHttpException
+   * @throws \Exception
    */
   public function actionRegister() {
-    $model = new RegistrationForm();
-    $model->username = \Yii::$app->request->post('username');
-    $model->password = \Yii::$app->request->post('password');
+    $model = new \dektrium\user\models\User();
+    $model->setScenario('register');
+    $model->attributes = \Yii::$app->request->post();
+    $model->username = $model->email;
     if ($model->register()) {
       return true;
     }
 
-    throw new BadRequestHttpException('Unable to register user.');
+    $errors = $model->getFirstErrors();
+    throw new BadRequestHttpException(reset($errors));
   }
 
   public function actionLogout() {
