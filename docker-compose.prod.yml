@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  nginx:
+    ports:
+      - "8012:80"
+    restart: always
+
+  php:
+    restart: always
+
+  mysql:
+    restart: always

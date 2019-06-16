@@ -1,0 +1,31 @@
+.upload__zone {
+    width: 100%;
+}
+
+.upload__zone .dz-default {
+    width: 100%;
+}
+
+.file {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.file__content {
+    width: 100%;
+    height: 200px;
+}
+
+.file__content_default {
+    line-height: 200px;
+    text-align: center;
+}
+
+.file__content_img {
+    background: transparent center center no-repeat;
+    background-size: cover;
+}
+
+.file__description p {
+    margin: 5px 0 0 0;
+}
