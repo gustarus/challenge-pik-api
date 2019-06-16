@@ -2,7 +2,9 @@
 
 namespace app\modules\muffin;
 
+use app\helpers\CorsHelper;
 use Yii;
+use yii\filters\auth\HttpBearerAuth;
 
 class Module extends \yii\base\Module {
 
@@ -20,5 +22,23 @@ class Module extends \yii\base\Module {
     if (YII_ENV === YII_ENV_DEV) {
       Yii::$app->response->headers->set('Access-Control-Allow-Origin', '*');
     }
+  }
+
+  /**
+   * @inheritdoc
+   */
+  public function behaviors() {
+    $behaviors = parent::behaviors();
+
+    $behaviors['cors'] = [
+      'class' => CorsHelper::className(),
+    ];
+
+    $behaviors['authenticator'] = [
+      'class' => HttpBearerAuth::className(),
+      'except' => ['auth/login', 'auth/register'],
+    ];
+
+    return $behaviors;
   }
 }

@@ -2,28 +2,14 @@
 
 namespace app\modules\muffin\components;
 
-use app\models\User;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\db\ActiveRecord;
-use yii\filters\auth\HttpBearerAuth;
 use yii\rest\ActiveController as BaseController;
 
 class ActiveController extends BaseController {
 
   public $defaultPageSize = 20;
-
-  /**
-   * @inheritdoc
-   */
-  public function behaviors() {
-    $behaviors = parent::behaviors();
-    $behaviors['authenticator'] = [
-      'class' => HttpBearerAuth::className(),
-    ];
-
-    return $behaviors;
-  }
 
   /**
    * @inheritdoc

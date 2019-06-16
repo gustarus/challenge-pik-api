@@ -4,7 +4,8 @@ namespace app\modules\muffin\controllers;
 
 use app\models\User;
 use app\modules\muffin\components\BaseController;
-use dektrium\user\helpers\Password;
+use yii\web\BadRequestHttpException;
+use yii\web\ServerErrorHttpException;
 
 class AuthController extends BaseController {
 
@@ -18,7 +19,7 @@ class AuthController extends BaseController {
 
     $user = User::findByUsername($username);
     if (!$username || !$password || !$user) {
-      throw new \Exception('Invalid data passed.');
+      throw new BadRequestHttpException('Invalid data passed.');
     } else if ($user->validatePassword($password)) {
       if (\Yii::$app->user->login($user)) {
         $user->auth_key = \Yii::$app->security->generateRandomString();
@@ -26,25 +27,16 @@ class AuthController extends BaseController {
           return $user->auth_key;
         }
 
-        throw new \Exception('Unable to save user with new auth key.');
+        throw new ServerErrorHttpException('Unable to save user with new auth key.');
       }
 
-      throw new \Exception('Unable to login.');
+      throw new ServerErrorHttpException('Unable to login.');
     }
 
-    throw new \Exception('Wrong username or password.');
+    throw new BadRequestHttpException('Wrong username or password.');
   }
 
   public function actionLogout() {
     return \Yii::$app->user->logout();
-  }
-
-  /**
-   * @inheritdoc
-   */
-  public function behaviors() {
-    $behaviors = parent::behaviors();
-    unset($behaviors['authenticator']);
-    return $behaviors;
   }
 }
