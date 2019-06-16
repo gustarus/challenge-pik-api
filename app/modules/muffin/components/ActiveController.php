@@ -29,24 +29,9 @@ class ActiveController extends BaseController {
    * @inheritdoc
    */
   public function actions() {
-    return [
-      'index' => [
-        'class' => 'yii\rest\IndexAction',
-        'modelClass' => $this->modelClass,
-        'checkAccess' => [$this, 'checkAccess'],
-        'prepareDataProvider' => [$this, 'prepareDataProvider'],
-      ],
-
-      'view' => [
-        'class' => 'yii\rest\ViewAction',
-        'modelClass' => $this->modelClass,
-        'checkAccess' => [$this, 'checkAccess'],
-      ],
-
-      'options' => [
-        'class' => 'yii\rest\OptionsAction',
-      ],
-    ];
+    $actions = parent::actions();
+    $actions['index']['prepareDataProvider'] = [$this, 'prepareDataProvider'];
+    return $actions;
   }
 
   /**

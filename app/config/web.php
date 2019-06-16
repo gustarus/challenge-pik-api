@@ -55,13 +55,16 @@ $config = [
       'enablePrettyUrl' => true,
       'showScriptName' => false,
       'rules' => [
-//        [
-//          'class' => 'yii\rest\UrlRule',
-//          'pluralize' => false,
-//          'controller' => [
-//             'muffin/path',
-//          ]
-//        ],
+        [
+          'class' => 'yii\rest\UrlRule',
+          'pluralize' => false,
+          'controller' => [
+             'muffin/property',
+             'muffin/property-room',
+             'muffin/property-picture',
+             'muffin/property-room-picture',
+          ]
+        ],
 
         '/muffin/auth/login' => '/muffin/auth/login',
         '/muffin/auth/logout' => '/muffin/auth/logout',
