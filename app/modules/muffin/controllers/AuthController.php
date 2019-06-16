@@ -15,11 +15,11 @@ class AuthController extends BaseController {
    * @throws \Exception
    */
   public function actionLogin() {
-    $username = \Yii::$app->request->post('username');
+    $email = \Yii::$app->request->post('email');
     $password = \Yii::$app->request->post('password');
 
-    $user = User::findByUsername($username);
-    if (!$username || !$password || !$user) {
+    $user = User::findByEmail($email);
+    if (!$email || !$password || !$user) {
       throw new BadRequestHttpException('Invalid data passed.');
     } else if ($user->validatePassword($password)) {
       if (\Yii::$app->user->login($user)) {

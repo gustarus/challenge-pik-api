@@ -15,6 +15,14 @@ class User extends \dektrium\user\models\User {
   }
 
   /**
+   * @param String $email
+   * @return User
+   */
+  public static function findByEmail($email) {
+    return self::find()->andWhere(['email' => $email])->one();
+  }
+
+  /**
    * @param $token
    * @param null $type
    * @return User
