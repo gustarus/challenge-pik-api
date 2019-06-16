@@ -4,6 +4,7 @@ namespace app\modules\muffin\controllers;
 
 use app\models\User;
 use app\modules\muffin\components\BaseController;
+use dektrium\user\models\RegistrationForm;
 use yii\web\BadRequestHttpException;
 use yii\web\ServerErrorHttpException;
 
@@ -34,6 +35,21 @@ class AuthController extends BaseController {
     }
 
     throw new BadRequestHttpException('Wrong username or password.');
+  }
+
+  /**
+   * @return bool
+   * @throws BadRequestHttpException
+   */
+  public function actionRegister() {
+    $model = new RegistrationForm();
+    $model->username = \Yii::$app->request->post('username');
+    $model->password = \Yii::$app->request->post('password');
+    if ($model->register()) {
+      return true;
+    }
+
+    throw new BadRequestHttpException('Unable to register user.');
   }
 
   public function actionLogout() {
