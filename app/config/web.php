@@ -66,6 +66,7 @@ $config = [
           ]
         ],
 
+        '/muffin/auth/register' => '/muffin/auth/register',
         '/muffin/auth/login' => '/muffin/auth/login',
         '/muffin/auth/logout' => '/muffin/auth/logout',
         '/muffin/service/hello' => '/muffin/service/hello',
