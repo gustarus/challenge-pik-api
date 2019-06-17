@@ -36,7 +36,7 @@ class Module extends \yii\base\Module {
 
     $behaviors['authenticator'] = [
       'class' => HttpBearerAuth::className(),
-      'except' => ['auth/login', 'auth/register'],
+      'except' => ['auth/login', 'auth/register', 'picture/download'],
     ];
 
     return $behaviors;
