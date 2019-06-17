@@ -1,5 +1,6 @@
-# TripsTips Api Interface
-Docker: nginx, php-fpm, mysql 
+# Challenge Pik Api
+Yii2 implementation for [api.challenge-pik.webulla.ru](https://api.challenge-pik.webulla.ru).
+Wrapped with Docker: nginx, php-fpm, mysql. 
 
 ## Installation
 1. Up the docker.
@@ -77,7 +78,7 @@ docker-compose up
 
 2. Open the browser.
 ```bash
-open localhost:8080
+open localhost:3000
 ```
 
 ## Clean docker data
