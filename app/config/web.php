@@ -71,7 +71,7 @@ $config = [
         '/muffin/auth/logout' => '/muffin/auth/logout',
         '/muffin/service/hello' => '/muffin/service/hello',
         '/muffin/file/upload' => '/muffin/file/upload',
-        '/muffin/file/download/:id' => '/muffin/file/download',
+        '/muffin/file/:id/download' => '/muffin/file/download',
       ],
     ],
 
