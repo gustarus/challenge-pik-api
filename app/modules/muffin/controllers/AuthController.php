@@ -11,7 +11,7 @@ use yii\web\ServerErrorHttpException;
 class AuthController extends BaseController {
 
   /**
-   * @return string
+   * @return array
    * @throws \Exception
    */
   public function actionLogin() {
@@ -25,7 +25,7 @@ class AuthController extends BaseController {
       if (\Yii::$app->user->login($user)) {
         $user->auth_key = \Yii::$app->security->generateRandomString();
         if ($user->save()) {
-          return $user->auth_key;
+          return ['id' => $user->id, 'token' => $user->auth_key];
         }
 
         throw new ServerErrorHttpException('Unable to save user with new auth key.');
