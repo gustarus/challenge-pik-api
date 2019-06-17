@@ -33,9 +33,9 @@ class UploadAction extends Action {
    * @inheritdoc
    */
   public function run() {
-    if (!Yii::$app->request->isAjax) {
-      throw new BadRequestHttpException('Only ajax requests available.');
-    }
+    // if (!Yii::$app->request->isAjax) {
+    //   throw new BadRequestHttpException('Only ajax requests available.');
+    // }
 
     if (!$file = UploadedFile::getInstanceByName($this->name)) {
       throw new BadRequestHttpException('File was not found in request.');
@@ -50,4 +50,4 @@ class UploadAction extends Action {
 
     return $model;
   }
-} 
+}
