@@ -66,11 +66,11 @@ $config = [
           ]
         ],
 
-        'POST /muffin/auth/register' => '/muffin/auth/register',
-        'POST /muffin/auth/login' => '/muffin/auth/login',
-        'POST /muffin/auth/logout' => '/muffin/auth/logout',
+        'OPTIONS,POST /muffin/auth/register' => '/muffin/auth/register',
+        'OPTIONS,POST /muffin/auth/login' => '/muffin/auth/login',
+        'OPTIONS,POST /muffin/auth/logout' => '/muffin/auth/logout',
         'GET /muffin/service/hello' => '/muffin/service/hello',
-        'PUT /muffin/picture' => '/muffin/picture/upload',
+        'OPTIONS,POST /muffin/picture' => '/muffin/picture/upload',
         'GET /muffin/picture/<id>' => '/muffin/picture/download',
       ],
     ],
