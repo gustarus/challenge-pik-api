@@ -82,8 +82,8 @@ class PropertyRoomPicture extends \yii\db\ActiveRecord {
   /**
    * @inheritdoc
    */
-  public function beforeDelete() {
-    if (!parent::beforeDelete()) {
+  public function afterDelete() {
+    if (!parent::afterDelete()) {
       return false;
     }
 
