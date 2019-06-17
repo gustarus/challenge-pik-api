@@ -46,6 +46,7 @@ class PropertyRoom extends \yii\db\ActiveRecord {
    */
   public function rules() {
     return [
+      ['type', 'in', 'range' => ['kitchen', 'dinning-room', 'living-room', 'bedroom', 'bathroom', 'balcony', 'garage']],
       [['property_id', 'type', 'title'], 'required'],
       [['property_id'], 'integer'],
       [['type', 'title'], 'string', 'max' => 255],
