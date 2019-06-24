@@ -63,6 +63,7 @@ $config = [
              'muffin/property-room',
              'muffin/property-picture',
              'muffin/property-room-picture',
+             'muffin/property-room-picture-placemark',
           ]
         ],
 
